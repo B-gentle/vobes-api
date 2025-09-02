@@ -3,7 +3,8 @@
   "type": "module",
   "scripts": {
     "postinstall": "prisma generate",
-    "dev": "vc dev"
+    "dev": "vc dev",
+    "build": "tsc"
   },
   "dependencies": {
     "@hono/swagger-ui": "^0.5.2",

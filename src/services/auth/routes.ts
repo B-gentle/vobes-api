@@ -20,7 +20,7 @@ export const signUpRoute = createRoute({
     body: genericBodyRequest(signUpUserSchema),
   },
   responses: {
-    200: defaultSuccessResponse(authRes),
+    201: defaultSuccessResponse(authRes),
     400: genericErrorResponse(
       "User already exists",
       "The email is already in use"

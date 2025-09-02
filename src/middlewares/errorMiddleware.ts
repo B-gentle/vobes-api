@@ -2,9 +2,10 @@ import { Context, Next } from "hono";
 import { HTTPException } from "hono/http-exception";
 import { logger } from "../utils/logger.js";
 import { APIException } from "../utils/utils.js";
+import { StatusCode } from "hono/utils/http-status";
 
 export const errorHandler = async (err: Error, c: Context) => {
-  let status = 500;
+  let status: StatusCode | number = 500;
   let message = "Internal Server Error";
   let details: unknown = undefined;
 
@@ -41,7 +42,7 @@ export const errorHandler = async (err: Error, c: Context) => {
         ...(details ? { details } : {}),
       },
     },
-    // cast status to any to satisfy Hono's stricter status type
-    { status: status as any }
+
+    { status: status as unknown as any }
   );
 };
